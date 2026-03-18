@@ -12,7 +12,7 @@
 	"scripts": {
 		"build": "tsc",
 		"dev": "tsc --watch",
-		"test": "prettier --check . && xo && ava"
+		"test": "prettier --check . && xo && npm run build && ava"
 	},
 	"files": [
 		"dist"
@@ -20,10 +20,12 @@
 	"dependencies": {
 		"ink": "^4.1.0",
 		"meow": "^11.0.0",
+		"pg": "^8.20.0",
 		"react": "^18.2.0"
 	},
 	"devDependencies": {
 		"@sindresorhus/tsconfig": "^3.0.1",
+		"@types/pg": "^8.18.0",
 		"@types/react": "^18.0.32",
 		"@vdemedes/prettier-config": "^2.0.1",
 		"ava": "^5.2.0",
@@ -43,14 +45,16 @@
 			"tsx": "module"
 		},
 		"nodeArguments": [
-			"--loader=ts-node/esm"
+			"--loader=ts-node/esm/transpile-only"
 		]
 	},
 	"xo": {
 		"extends": "xo-react",
 		"prettier": true,
 		"rules": {
-			"react/prop-types": "off"
+			"react/prop-types": "off",
+			"@typescript-eslint/ban-types": "off",
+			"unicorn/expiring-todo-comments": "off"
 		}
 	},
 	"prettier": "@vdemedes/prettier-config"

@@ -1,14 +1,16 @@
 import React from 'react';
-import {Text} from 'ink';
+import {Box, Text} from 'ink';
 
 type Props = {
-	name: string | undefined;
+	readonly lines: string[];
 };
 
-export default function App({name = 'Stranger'}: Props) {
+export default function App({lines}: Props) {
 	return (
-		<Text>
-			MIAU, <Text color="green">{name}</Text>! MIAU!
-		</Text>
+		<Box flexDirection="column">
+			{lines.map(line => (
+				<Text key={line}>{line}</Text>
+			))}
+		</Box>
 	);
 }
