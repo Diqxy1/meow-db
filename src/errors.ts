@@ -4,7 +4,8 @@ export type CliErrorCode =
 	| 'DB_NOT_SELECTED'
 	| 'INVALID_ARGUMENT'
 	| 'DB_CONNECTION_FAILED'
-	| 'DB_QUERY_FAILED';
+	| 'DB_QUERY_FAILED'
+	| 'DB_TIMEOUT';
 
 type CliErrorOptions = {
 	hint?: string;
